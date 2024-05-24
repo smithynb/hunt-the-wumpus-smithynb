@@ -1,8 +1,14 @@
 #ifndef WUMPUS_HPP
 #define WUMPUS_HPP
+#include "event.hpp"
 
 // TODO Wumpus interface (define the wumpus class and declare its member
 // functions below)
-
+class wumpus : public event{
+private:
+public:
+    void trigger();
+    void percept();
+};
 
 #endif

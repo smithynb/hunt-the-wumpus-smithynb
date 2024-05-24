@@ -15,9 +15,49 @@ game::game(int width, int height, bool debug) :
 		height(height),
 		debug(debug) {
 	// TODO Create the game board: 2D vector of room objects
+	rooms.resize(width);
+	for(int i=0;i<width;i++){
+		rooms.at(i).resize(height);
+	}
 
 	// TODO Randomly insert events (2 bats, 2 stalactites, 1 wumpus, 1 gold,
 	// 2 arrows, 1 escape rope) into the board
+
+	//these are all the same but the only thing differing
+	//is the number of objects to place and the type
+	//2 bats
+	int placed_objects = 0;
+	while(placed_objects<2){
+		//allocate new object
+		event* b = new bats;
+		//store to empty room
+		place_random_empty(b);
+		placed_objects++;
+	}
+	//2 stalactites
+	placed_objects=0;
+	while(placed_objects<2){
+		event* s = new stalactites;
+		place_random_empty(s);
+		placed_objects++;
+	}
+	//wumpus
+	event* w = new wumpus;
+	place_random_empty(w);
+	//gold
+	event* g = new gold;
+	place_random_empty(g);
+	//2 arrows
+	placed_objects=0;
+	while(placed_objects<2){
+		event* a = new arrow;
+		place_random_empty(a);
+		placed_objects++;
+	}
+	//escape rope
+	event* r = new escape_rope;
+	place_random_empty(r);
+
 }
 
 void game::display_game() const{
@@ -296,4 +336,20 @@ void game::play_game(){
 		// TODO If the user is on a space with an event, trigger its encounter
 
 	}
+}
+
+void game::place_random_empty(event* e){
+	bool found = false;
+	int x,y;
+	//this is probably so inefficient 
+	//but I don't know a more efficient algorithm atm
+	while(!found){
+		x = rand()%width;
+		y = rand()%height;
+		//no event then return
+		if(!rooms.at(x).at(y).has_event()){
+			found = true;
+		}
+	}
+	rooms.at(x).at(y).set_event(e);
 }

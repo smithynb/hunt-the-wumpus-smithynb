@@ -9,7 +9,7 @@
 class game {
 private:
 	// TODO declare a 2D vector of Room objects:
-
+	std::vector<std::vector<Room>> rooms;
 	// Suggested member variables:
 	int num_arrows = 0; 	// keep track of number of arrows remaining
 	int width;				// width of the game grid
@@ -17,6 +17,7 @@ private:
 	bool debug;				// debug mode or not
 
 	// TODO Feel free to add more member variables if you'd like
+	int lives = 3; //number of lives remaining
 
 public:
 	// Suggested functions (there are no required functions here):
@@ -223,5 +224,15 @@ public:
 	void play_game();
 
 	// TODO Add more member functions here
+
+	/*
+	Name: place_random_empty
+	Description: randomly finds a room with no event
+	and places the event object in the room
+	Parameters:
+		e (const event*): the event to place in the empty room
+	*/
+	void place_random_empty(event* e);
+
 };
 #endif
