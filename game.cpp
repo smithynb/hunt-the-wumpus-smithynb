@@ -260,9 +260,9 @@ void game::move(char direction) {
 	} else if (direction == 'a') {
 		this->move_left();
 	} else if (direction == 's') {
-		this->move_right();
-	} else {
 		this->move_down();
+	} else {
+		this->move_right();
 	}
 }
 
