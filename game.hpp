@@ -18,6 +18,9 @@ private:
 
 	// TODO Feel free to add more member variables if you'd like
 	int lives = 3; //number of lives remaining
+	//initialize to 0 for testing
+	int player_x=0; //x position of the player
+	int player_y=0; //y position of the player
 
 public:
 	// Suggested functions (there are no required functions here):
@@ -233,6 +236,13 @@ public:
 		e (const event*): the event to place in the empty room
 	*/
 	void place_random_empty(event* e);
+
+	/*
+	Name: check_adjacent
+	Description: calls the percept function overrides
+	of adjacent room events if any (not including diagonal)
+	*/
+	void check_adjacent();
 
 };
 #endif

@@ -148,10 +148,39 @@ bool game::can_move_in_direction(char direction) {
 	// 'd' for right). Return false otherwise. The player can move in the
 	// given direction so long as it wouldn't cause them to move off the
 	// grid.
+
+	//check bounds in the array relative to the player's current position
+	//don't need to check corners
+	//use width and height variables
+	if(direction=='a'){
+		if(player_x-1>=0){
+			return true;
+		}
+	}
+	else if(direction=='d'){
+		if(player_x+1<=width-1){
+			return true;
+		}
+	}
+
+	else if(direction=='s'){
+		if(player_y+1<=height-1){
+			return true;
+		}
+	}
+	else if(direction=='w'){
+		if(player_y-1>=0){
+			return true;
+		}
+	}
+	//if move is illegal
+	return false;
 	
+	/*
 	std::cout << "game::can_move_in_direction is not implemented..." <<
 		std::endl;
 	return true;
+	*/
 }
 
 bool game::is_valid_action(char action) {
@@ -352,4 +381,10 @@ void game::place_random_empty(event* e){
 		}
 	}
 	rooms.at(x).at(y).set_event(e);
+}
+
+void game::check_adjacent(){
+	//validate left, right, up, down directions
+	//and then call the percept() of events in those rooms
+
 }
