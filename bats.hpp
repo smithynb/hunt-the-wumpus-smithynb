@@ -7,7 +7,7 @@
 class bats : public event{
 private:
 public:
-    void trigger();
+    void trigger(game& g);
     void percept();
     void print_char()const;
 };

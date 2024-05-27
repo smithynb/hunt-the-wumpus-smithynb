@@ -73,14 +73,23 @@ void game::display_game() const{
 	for (int i = 0; i < this->height; ++i) {
 		std::cout << "||";
 		for (int j = 0; j < this->width; ++j) {
+			/*i is y 
+			j is x
+			I thought it was the other way around and was 
+			ripping out my hair for 15 minutes over this*/
+
 			// The first char indicates whether there is a player in the room
 			// at row index i, column index j. TODO If the room contains the
 			// player, print an asterisk ("*")
-
+			if(i==player_y && j==player_x){
+				std::cout << "*";
+			}
 			// TODO else, print a space (" ")
-
+			else{
+				std::cout << " ";
+			}
 			// The next char indicates the event in the room.
-			
+
 			// TODO If debug mode is disabled OR the room at location <i, j>
 			// does not have an event, print a space (" ")
 			// For example:
@@ -88,11 +97,17 @@ void game::display_game() const{
 			// 	std::cout << " ";
 			// }
 			//
+			if(!this->debug || !rooms.at(j).at(i).has_event()){
+				std::cout << " ";
+			}
 			// TODO else, print the room's debug symbol. There are a few ways to
 			// do this. You can use polymorphism, or an event could have a
 			// char debug_symbol member variable and some sort of
 			// get_debug_symbol() member function that you could call here
 			// to get the character and print it.
+			else{
+				rooms.at(j).at(i).print_char();
+			}
 
 			std::cout << " ||";
 		}
@@ -123,8 +138,10 @@ bool game::check_win() const{
 bool game::check_lose() const{
 	// TODO Delete the below placeholder code. Return true if the player
 	// has lost the game. Return false otherwise.
-
-	std::cout << "game::check_lose() is not implemented..." << std::endl;
+	if(lives==0){
+		return true;
+	}
+	//std::cout << "game::check_lose() is not implemented..." << std::endl;
 	return false;
 }
 
@@ -388,3 +405,5 @@ void game::check_adjacent(){
 	//and then call the percept() of events in those rooms
 
 }
+
+

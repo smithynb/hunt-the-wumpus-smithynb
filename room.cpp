@@ -8,9 +8,15 @@ void Room::clear_event(){
     delete this->room_event;
     this->room_event = nullptr;
 }
-bool Room::has_event(){
+bool Room::has_event()const{
     if(this->room_event!=nullptr){
         return true; //event
     }
     return false; //no event
+}
+void Room::print_char()const{
+    this->room_event->print_char();
+}
+void Room::trigger(game& g){
+    this->room_event->trigger(g);
 }

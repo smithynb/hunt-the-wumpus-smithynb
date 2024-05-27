@@ -3,17 +3,15 @@
 #include <iostream>
 //#include "game.hpp"
 // Event interface
+class game; //forward declaration to resolve circular include
+
 class event {
 private:
 	// TODO private members, if relevant
 protected:
 	// TODO protected members, if relevant
 	
-	/*
-	Name: trigger
-	Description: triggers the event(if any)
-	*/
-	virtual void trigger()=0;
+	
 
 	/*
 	Name: percept
@@ -31,6 +29,11 @@ public:
 	Description: print the char for the room for debug
 	*/
 	virtual void print_char()const =0;
+	/*
+	Name: trigger
+	Description: triggers the event(if any)
+	*/
+	virtual void trigger(game& g)=0;
 };
 
 #endif

@@ -42,12 +42,11 @@ public:
 
 	/*
 	Name: trigger
+	Description: calls the trigger function of 
+	the room's event and pass the game as reference
 	*/
-	void trigger();
-	/*
-	Name: percept
-	*/
-	
+	void trigger(game& g);
+
 };
 
 #endif

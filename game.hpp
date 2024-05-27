@@ -244,5 +244,7 @@ public:
 	*/
 	void check_adjacent();
 
+	
+
 };
 #endif
