@@ -9,6 +9,7 @@ private:
 public:
     void trigger();
     void percept();
+    void print_char()const;
 };
 
 #endif

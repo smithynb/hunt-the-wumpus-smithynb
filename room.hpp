@@ -32,7 +32,22 @@ public:
 	Description: returns true if the room isn't empty
 	Returns: true if room_event isn't nullptr (bool)
 	*/
-	bool has_event();
+	bool has_event()const;
+
+	/*
+	Name: print_char
+	Description: calls the print_char of the room's event
+	*/
+	void print_char()const;
+
+	/*
+	Name: trigger
+	*/
+	void trigger();
+	/*
+	Name: percept
+	*/
+	
 };
 
 #endif
