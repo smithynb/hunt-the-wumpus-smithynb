@@ -1,7 +1,7 @@
 #include "bats.hpp"
 
 // TODO Bats implementation (define bats member functions below)
-void bats::trigger(game& g){
+void bats::trigger(game_state& g){
     //placeholder
 }
 void bats::percept(){

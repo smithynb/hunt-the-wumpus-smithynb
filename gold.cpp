@@ -1,7 +1,7 @@
 #include "gold.hpp"
 
 // TODO Gold implementation (define gold member functions below)
-void gold::trigger(game& g){
+void gold::trigger(game_state& g){
     //placeholder
 }
 void gold::percept(){

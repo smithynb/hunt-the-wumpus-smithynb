@@ -1,7 +1,7 @@
 #include "escape_rope.hpp"
 
 // TODO Escape rope implementation (define escape_rope member functions below)
-void escape_rope::trigger(game& g){
+void escape_rope::trigger(game_state& g){
     //placeholder
 }
 void escape_rope::percept(){

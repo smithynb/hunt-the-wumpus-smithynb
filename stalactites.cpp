@@ -1,7 +1,7 @@
 #include "stalactites.hpp"
 
 // TODO Stalactites implementation (define stalactites member functions below)
-void stalactites::trigger(game& g){
+void stalactites::trigger(game_state& g){
     //placeholder
 }
 void stalactites::percept(){

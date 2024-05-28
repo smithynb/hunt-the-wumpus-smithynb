@@ -1,7 +1,7 @@
 #include "wumpus.hpp"
 
 // TODO Wumpus implementation (define wumpus member functions below)
-void wumpus::trigger(game& g){
+void wumpus::trigger(game_state& g){
     //placeholder
 }
 void wumpus::percept(){

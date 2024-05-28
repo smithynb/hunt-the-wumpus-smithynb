@@ -2,6 +2,7 @@
 #define ROOM_HPP
 
 #include "event.hpp"
+#include "game_state.hpp"
 
 // Room interface
 class Room {
@@ -44,8 +45,10 @@ public:
 	Name: trigger
 	Description: calls the trigger function of 
 	the room's event and pass the game as reference
+	Parameters:
+		g (game_state&): the variables and functions of the "game state"
 	*/
-	void trigger(game& g);
+	void trigger(game_state& g);
 
 	/*
 	Name: check_rope

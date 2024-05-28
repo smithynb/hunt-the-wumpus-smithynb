@@ -282,28 +282,28 @@ void game::move_up() {
 	// TODO Delete the below placeholder code. Move the player up one
 	// space in the grid, however you choose to do that.
 	gs.set_player_y(gs.get_player_y()-1);
-	std::cout << "game::move_up() is not implemented..." << std::endl;
+	//std::cout << "game::move_up() is not implemented..." << std::endl;
 }
 
 void game::move_down() {
 	// TODO Delete the below placeholder code. Move the player down one
 	// space in the grid, however you choose to do that.
 	gs.set_player_y(gs.get_player_y()+1);
-	std::cout << "game::move_down() is not implemented..." << std::endl;
+	//std::cout << "game::move_down() is not implemented..." << std::endl;
 }
 
 void game::move_left() {
 	// TODO Delete the below placeholder code. Move the player left one
 	// space in the grid, however you choose to do that.
 	gs.set_player_x(gs.get_player_x()-1);
-	std::cout << "game::move_left() is not implemented..." << std::endl;
+	//std::cout << "game::move_left() is not implemented..." << std::endl;
 }
 
 void game::move_right() {
 	// TODO Delete the below placeholder code. Move the player right one
 	// space in the grid, however you choose to do that.
 	gs.set_player_x(gs.get_player_x()+1);
-	std::cout << "game::move_right() is not implemented..." << std::endl;
+	//std::cout << "game::move_right() is not implemented..." << std::endl;
 }
 
 void game::move(char direction) {

@@ -17,7 +17,7 @@ bool Room::has_event()const{
 void Room::print_char()const{
     this->room_event->print_char();
 }
-void Room::trigger(game& g){
+void Room::trigger(game_state& g){
     this->room_event->trigger(g);
 }
 bool Room::check_rope(){

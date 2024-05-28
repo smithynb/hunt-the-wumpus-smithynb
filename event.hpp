@@ -1,12 +1,10 @@
 #ifndef EVENT_HPP
 #define EVENT_HPP
 #include <iostream>
-//#include "game.hpp"
-// Event interface
-class game; 
-//forward declaration to allow taking game 
-//reference without circular include issues
-
+#include "game_state.hpp"
+//forward declaration of game_state
+//class game_state;
+// Event interface 
 class event {
 private:
 	// TODO private members, if relevant
@@ -24,7 +22,7 @@ public:
 	Name: trigger
 	Description: triggers the event(if any)
 	*/
-	virtual void trigger(game& g)=0;
+	virtual void trigger(game_state& g)=0;
 	/*
 	Name: percept
 	Description: prints percept text
