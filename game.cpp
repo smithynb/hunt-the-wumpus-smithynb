@@ -59,7 +59,6 @@ game::game(int width, int height, bool debug) :
 	place_random_empty(r);
 	
 	//find the rope
-	
 	for(int i=0;i<width;i++){
 		for(int j=0;j<height;j++){
 			if(rooms.at(i).at(j).check_rope()){
@@ -282,28 +281,28 @@ char game::get_arrow_fire_direction() {
 void game::move_up() {
 	// TODO Delete the below placeholder code. Move the player up one
 	// space in the grid, however you choose to do that.
-
+	player_y--;
 	std::cout << "game::move_up() is not implemented..." << std::endl;
 }
 
 void game::move_down() {
 	// TODO Delete the below placeholder code. Move the player down one
 	// space in the grid, however you choose to do that.
-
+	player_y++;
 	std::cout << "game::move_down() is not implemented..." << std::endl;
 }
 
 void game::move_left() {
 	// TODO Delete the below placeholder code. Move the player left one
 	// space in the grid, however you choose to do that.
-
+	player_x--;
 	std::cout << "game::move_left() is not implemented..." << std::endl;
 }
 
 void game::move_right() {
 	// TODO Delete the below placeholder code. Move the player right one
 	// space in the grid, however you choose to do that.
-
+	player_x++;
 	std::cout << "game::move_right() is not implemented..." << std::endl;
 }
 
@@ -387,7 +386,9 @@ void game::play_game(){
 		}
 
 		// TODO If the user is on a space with an event, trigger its encounter
-
+		if(rooms.at(player_x).at(player_y).has_event()){
+			//rooms.at(player_x).at(player_y).trigger();
+		}
 	}
 }
 

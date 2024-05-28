@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "room.hpp"
-
+#include "game_state.hpp"
 // game interface
 class game {
 private:
@@ -17,6 +17,7 @@ private:
 	bool debug;				// debug mode or not
 
 	// TODO Feel free to add more member variables if you'd like
+	game_state gs;
 	int lives = 3; //number of lives remaining
 	//initialize to 0 for testing
 	int player_x=0; //x position of the player
