@@ -8,20 +8,21 @@ private:
     int player_y;
     bool confused = false;
     int confused_duration = 0;
+    bool has_gold = false;
     int lives = 3;
 
     int wumpus_x;
     int wumpus_y;
 public:
     //getters
-    int get_player_x();
-    int get_player_y();
+    int get_player_x()const;
+    int get_player_y()const;
     bool is_confused();
-    int get_lives();
+    int get_lives()const;
     //setters
     void reduce_lives();
-    void set_x();
-    void set_y();
+    void set_player_x(int x);
+    void set_player_y(int y);
     void confuse();
 
 };

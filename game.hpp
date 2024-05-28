@@ -18,10 +18,10 @@ private:
 
 	// TODO Feel free to add more member variables if you'd like
 	game_state gs;
-	int lives = 3; //number of lives remaining
+	//int lives = 3; //number of lives remaining
 	//initialize to 0 for testing
-	int player_x=0; //x position of the player
-	int player_y=0; //y position of the player
+	//int player_x=0; //x position of the player
+	//int player_y=0; //y position of the player
 
 public:
 	// Suggested functions (there are no required functions here):

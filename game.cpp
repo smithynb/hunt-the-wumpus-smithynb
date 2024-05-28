@@ -62,8 +62,8 @@ game::game(int width, int height, bool debug) :
 	for(int i=0;i<width;i++){
 		for(int j=0;j<height;j++){
 			if(rooms.at(i).at(j).check_rope()){
-				player_x = i;
-				player_y = j;
+				gs.set_player_x(i);
+				gs.set_player_y(j);
 			}
 		}
 	}
@@ -92,7 +92,7 @@ void game::display_game() const{
 			// The first char indicates whether there is a player in the room
 			// at row index i, column index j. TODO If the room contains the
 			// player, print an asterisk ("*")
-			if(i==player_y && j==player_x){
+			if(i==gs.get_player_y() && j==gs.get_player_x()){
 				std::cout << "*";
 			}
 			// TODO else, print a space (" ")
@@ -149,7 +149,7 @@ bool game::check_win() const{
 bool game::check_lose() const{
 	// TODO Delete the below placeholder code. Return true if the player
 	// has lost the game. Return false otherwise.
-	if(lives==0){
+	if(gs.get_lives()==0){
 		return true;
 	}
 	//std::cout << "game::check_lose() is not implemented..." << std::endl;
@@ -181,23 +181,23 @@ bool game::can_move_in_direction(char direction) {
 	//don't need to check corners
 	//use width and height variables
 	if(direction=='a'){
-		if(player_x-1>=0){
+		if(gs.get_player_x()-1>=0){
 			return true;
 		}
 	}
 	else if(direction=='d'){
-		if(player_x+1<=width-1){
+		if(gs.get_player_x()+1<=width-1){
 			return true;
 		}
 	}
 
 	else if(direction=='s'){
-		if(player_y+1<=height-1){
+		if(gs.get_player_y()+1<=height-1){
 			return true;
 		}
 	}
 	else if(direction=='w'){
-		if(player_y-1>=0){
+		if(gs.get_player_y()-1>=0){
 			return true;
 		}
 	}
@@ -281,28 +281,28 @@ char game::get_arrow_fire_direction() {
 void game::move_up() {
 	// TODO Delete the below placeholder code. Move the player up one
 	// space in the grid, however you choose to do that.
-	player_y--;
+	gs.set_player_y(gs.get_player_y()-1);
 	std::cout << "game::move_up() is not implemented..." << std::endl;
 }
 
 void game::move_down() {
 	// TODO Delete the below placeholder code. Move the player down one
 	// space in the grid, however you choose to do that.
-	player_y++;
+	gs.set_player_y(gs.get_player_y()+1);
 	std::cout << "game::move_down() is not implemented..." << std::endl;
 }
 
 void game::move_left() {
 	// TODO Delete the below placeholder code. Move the player left one
 	// space in the grid, however you choose to do that.
-	player_x--;
+	gs.set_player_x(gs.get_player_x()-1);
 	std::cout << "game::move_left() is not implemented..." << std::endl;
 }
 
 void game::move_right() {
 	// TODO Delete the below placeholder code. Move the player right one
 	// space in the grid, however you choose to do that.
-	player_x++;
+	gs.set_player_x(gs.get_player_x()+1);
 	std::cout << "game::move_right() is not implemented..." << std::endl;
 }
 
@@ -386,7 +386,7 @@ void game::play_game(){
 		}
 
 		// TODO If the user is on a space with an event, trigger its encounter
-		if(rooms.at(player_x).at(player_y).has_event()){
+		if(rooms.at(gs.get_player_x()).at(gs.get_player_y()).has_event()){
 			//rooms.at(player_x).at(player_y).trigger();
 		}
 	}
