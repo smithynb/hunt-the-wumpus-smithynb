@@ -387,7 +387,7 @@ void game::play_game(){
 
 		// TODO If the user is on a space with an event, trigger its encounter
 		if(rooms.at(gs.get_player_x()).at(gs.get_player_y()).has_event()){
-			//rooms.at(player_x).at(player_y).trigger();
+			rooms.at(gs.get_player_x()).at(gs.get_player_y()).trigger(gs);
 		}
 	}
 }

@@ -16,6 +16,7 @@ public:
 	/*
 	Name: print_char
 	Description: print the char for the room for debug
+	Probably would've been easier to put it as a variable in room
 	*/
 	virtual void print_char()const =0;
 	/*
