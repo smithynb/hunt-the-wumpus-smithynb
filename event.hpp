@@ -3,24 +3,15 @@
 #include <iostream>
 //#include "game.hpp"
 // Event interface
-class game; //forward declaration to resolve circular include
+class game; 
+//forward declaration to allow taking game 
+//reference without circular include issues
 
 class event {
 private:
 	// TODO private members, if relevant
 protected:
 	// TODO protected members, if relevant
-	
-	
-
-	/*
-	Name: percept
-	Description: prints percept text
-	*/
-	virtual void percept()=0;
-
-	
-
 public:
 	// TODO public members
 	
@@ -34,6 +25,18 @@ public:
 	Description: triggers the event(if any)
 	*/
 	virtual void trigger(game& g)=0;
+	/*
+	Name: percept
+	Description: prints percept text
+	*/
+	virtual void percept()=0;
+
+	/*
+	Name: is_rope
+	Description: returns if the event is escape rope
+	Returns: true if overrided by escape rope
+	*/
+	virtual bool is_rope()const;
 };
 
 #endif

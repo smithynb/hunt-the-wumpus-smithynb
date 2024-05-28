@@ -20,3 +20,10 @@ void Room::print_char()const{
 void Room::trigger(game& g){
     this->room_event->trigger(g);
 }
+bool Room::check_rope(){
+    if(this->room_event!=nullptr && this->room_event->is_rope()){
+        return true;
+    }
+    
+    return false;
+}

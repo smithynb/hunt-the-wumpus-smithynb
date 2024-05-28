@@ -57,6 +57,18 @@ game::game(int width, int height, bool debug) :
 	//escape rope
 	event* r = new escape_rope;
 	place_random_empty(r);
+	
+	//find the rope
+	
+	for(int i=0;i<width;i++){
+		for(int j=0;j<height;j++){
+			if(rooms.at(i).at(j).check_rope()){
+				player_x = i;
+				player_y = j;
+			}
+		}
+	}
+	
 
 }
 
@@ -193,11 +205,6 @@ bool game::can_move_in_direction(char direction) {
 	//if move is illegal
 	return false;
 	
-	/*
-	std::cout << "game::can_move_in_direction is not implemented..." <<
-		std::endl;
-	return true;
-	*/
 }
 
 bool game::is_valid_action(char action) {

@@ -10,6 +10,7 @@ public:
     void trigger(game& g);
     void percept();
     void print_char()const;
+    bool is_rope()const;
 };
 
 #endif

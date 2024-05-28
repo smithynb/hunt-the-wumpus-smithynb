@@ -47,6 +47,13 @@ public:
 	*/
 	void trigger(game& g);
 
+	/*
+	Name: check_rope
+	Description: checks if the room has the rope event
+	Returns: (bool) true if the room has a rope
+	*/
+	bool check_rope();
+
 };
 
 #endif

@@ -10,3 +10,6 @@ void escape_rope::percept(){
 void escape_rope::print_char()const{
     std::cout<<'r';
 }
+bool escape_rope::is_rope()const{
+    return true;
+}
