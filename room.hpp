@@ -57,6 +57,12 @@ public:
 	*/
 	bool check_rope();
 
+	/*
+	Name: percept
+	Description: calls the percept function of the event if any
+	*/
+	void percept();
+
 };
 
 #endif

@@ -389,6 +389,8 @@ void game::play_game(){
 		if(rooms.at(gs.get_player_x()).at(gs.get_player_y()).has_event()){
 			rooms.at(gs.get_player_x()).at(gs.get_player_y()).trigger(gs);
 		}
+		//percept
+		check_adjacent();
 	}
 }
 
@@ -411,7 +413,19 @@ void game::place_random_empty(event* e){
 void game::check_adjacent(){
 	//validate left, right, up, down directions
 	//and then call the percept() of events in those rooms
-
+	if(can_move_in_direction('w')){
+		rooms.at(gs.get_player_x()).at(gs.get_player_y()-1).percept();
+	}
+	if(can_move_in_direction('s')){
+		rooms.at(gs.get_player_x()).at(gs.get_player_y()+1).percept();
+	}
+	if(can_move_in_direction('a')){
+		rooms.at(gs.get_player_x()-1).at(gs.get_player_y()).percept();
+	}
+	if(can_move_in_direction('d')){
+		rooms.at(gs.get_player_x()+1).at(gs.get_player_y()).percept();
+	}
+	
 }
 
 

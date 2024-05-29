@@ -27,3 +27,8 @@ bool Room::check_rope(){
     
     return false;
 }
+void Room::percept(){
+    if(this->room_event!=nullptr){
+        this->room_event->percept();
+    }
+}
