@@ -267,6 +267,20 @@ public:
 	Description: set action to random valid move
 	*/
 	void random_move();
+
+	/*
+	Name: find_wumpus
+	Description: gets wumpus coordinates
+	Side effects: changes game state wumpus coordinates
+	*/
+	void find_wumpus();
+
+	/*
+	Name: move_wumpus
+	Description: relocates the wumpus
+	Side effects: deletes and creates a new wumpus in array rooms
+	*/
+	void move_wumpus();
 	
 
 };

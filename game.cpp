@@ -46,16 +46,7 @@ game::game(int width, int height, bool debug) :
 	place_random_empty(w);
 
 	//find the wumpus
-	/*
-	for(int i=0;i<width;i++){
-		for(int j=0;j<height;j++){
-			if(rooms.at(i).at(j).check_wumpus()){
-				gs.set_wumpus_x(i);
-				gs.set_wumpus_y(j);
-			}
-		}
-	}
-	*/
+	find_wumpus();
 
 	//gold
 	event* g = new gold;
@@ -158,6 +149,10 @@ bool game::check_win() const{
 	// has won the game. Return false otherwise.
 	if(gs.has_gold() && 
 	rooms.at(gs.get_player_x()).at(gs.get_player_y()).check_rope()){
+		std::cout << "You win!" << std::endl;
+		return true;
+	}
+	else if(gs.wumpus_dead()){
 		std::cout << "You win!" << std::endl;
 		return true;
 	}
@@ -341,32 +336,76 @@ void game::fire_arrow_up() {
 	// TODO Delete the below placeholder code. Fire the arrow upward, killing
 	// the wumpus if it hits it or making the wumpus "wake up" and move
 	// randomly if it misses
-	
-	std::cout << "game::fire_arrow_up is not implemented..." << std::endl;
+	bool hit = false;
+	int y = gs.get_player_y();
+	for(int i=1;i<=3;i++){
+		if(y-i>=0){
+			if(rooms.at(gs.get_player_x()).at(y-i).check_wumpus()){
+				gs.kill_wumpus();
+				hit = true;
+			}
+		}
+	}
+	if(!hit){
+		move_wumpus();
+	}
 }
 
 void game::fire_arrow_down() {
 	// TODO Delete the below placeholder code. Fire the arrow downward, killing
 	// the wumpus if it hits it or making the wumpus "wake up" and move
 	// randomly if it misses
-	
-	std::cout << "game::fire_arrow_down is not implemented..." << std::endl;
+	bool hit = false;
+	int y = gs.get_player_y();
+	for(int i=1;i<=3;i++){
+		if(y+i<height){
+			if(rooms.at(gs.get_player_x()).at(y+i).check_wumpus()){
+				gs.kill_wumpus();
+				hit = true;
+			}
+		}
+	}
+	if(!hit){
+		move_wumpus();
+	}
 }
 
 void game::fire_arrow_left() {
 	// TODO Delete the below placeholder code. Fire the arrow leftward, killing
 	// the wumpus if it hits it or making the wumpus "wake up" and move
 	// randomly if it misses
-	
-	std::cout << "game::fire_arrow_left is not implemented..." << std::endl;
+	bool hit = false;
+	int x = gs.get_player_x();
+	for(int i=1;i<=3;i++){
+		if(x-i>=0){
+			if(rooms.at(x-i).at(gs.get_player_y()).check_wumpus()){
+				gs.kill_wumpus();
+				hit = true;
+			}
+		}
+	}
+	if(!hit){
+		move_wumpus();
+	}
 }
 
 void game::fire_arrow_right() {
 	// TODO Delete the below placeholder code. Fire the arrow rightward, killing
 	// the wumpus if it hits it or making the wumpus "wake up" and move
 	// randomly if it misses
-	
-	std::cout << "game::fire_arrow_right is not implemented..." << std::endl;
+	bool hit = false;
+	int x = gs.get_player_x();
+	for(int i=1;i<=3;i++){
+		if(x+i<width){
+			if(rooms.at(x+i).at(gs.get_player_y()).check_wumpus()){
+				gs.kill_wumpus();
+				hit = true;
+			}
+		}
+	}
+	if(!hit){
+		move_wumpus();
+	}
 }
 
 void game::fire_arrow(char direction) {
@@ -374,7 +413,7 @@ void game::fire_arrow(char direction) {
 		this->fire_arrow_up();
 	} else if (direction == 'a') {
 		this->fire_arrow_left();
-	} else if (direction == 's') {
+	} else if (direction == 'd') {
 		this->fire_arrow_right();
 	} else {
 		this->fire_arrow_down();
@@ -491,9 +530,7 @@ void game::respawn(){
 		}
 	}
 	if(rooms.at(gs.get_player_x()).at(gs.get_player_y()).check_wumpus()){
-		event* w = new wumpus;
-		place_random_empty(w);
-		rooms.at(gs.get_player_x()).at(gs.get_player_y()).free_event();
+		move_wumpus();
 	}
 	gs.set_player_x(rope_x);
 	gs.set_player_y(rope_y);
@@ -525,4 +562,28 @@ void game::random_move(){
 			done = true;
 		}
 	}
+}
+
+void game::find_wumpus(){
+	for(int i=0;i<width;i++){
+		for(int j=0;j<height;j++){
+			if(rooms.at(i).at(j).check_wumpus()){
+				gs.set_wumpus_x(i);
+				gs.set_wumpus_y(j);
+			}
+		}
+	}
+}
+
+void game::move_wumpus(){
+	//store current wumpus location
+	int x = gs.get_wumpus_x();
+	int y = gs.get_wumpus_y();
+	//place new wumpus
+	event* w = new wumpus;
+	place_random_empty(w);
+	//delete old wumpus
+	rooms.at(x).at(y).free_event();
+	//get new location
+	find_wumpus();
 }

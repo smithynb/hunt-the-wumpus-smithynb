@@ -16,12 +16,12 @@ bool game_state::is_confused(){
 int game_state::get_lives()const{
     return this->lives;
 }
-/*int game_state::get_wumpus_x()const{
+int game_state::get_wumpus_x()const{
     return this->wumpus_x;
 }
 int game_state::get_wumpus_y()const{
     return this->wumpus_y;
-}*/
+}
 bool game_state::has_gold()const{
     return this->gold;
 }
@@ -34,6 +34,9 @@ bool game_state::respawn(){
     bool temp = this->respawn_player;
     this->respawn_player=false;
     return temp;
+}
+bool game_state::wumpus_dead()const{
+    return this->wumpus_killed;
 }
 
 void game_state::reduce_lives(){
@@ -49,12 +52,12 @@ void game_state::set_player_y(int y){
 void game_state::confuse(){
     this->confused = true;
 }
-/*void game_state::set_wumpus_x(int x){
+void game_state::set_wumpus_x(int x){
     this->wumpus_x = x;
 }
 void game_state::set_wumpus_y(int y){
     this->wumpus_y = y;
-}*/
+}
 void game_state::set_gold(bool x){
     this->gold=x;
 }
@@ -63,6 +66,9 @@ void game_state::pickup_arrow(){
 }
 void game_state::use_arrow(){
     this->num_arrows--;
+}
+void game_state::kill_wumpus(){
+    wumpus_killed = true;
 }
 
 void game_state::print_lives()const{
