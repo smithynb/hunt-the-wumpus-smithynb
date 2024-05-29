@@ -5,8 +5,11 @@
 //could also just use a struct lol
 class game_state{
 private:
-    int player_x;
-    int player_y;
+    //player position initialized out of bounds 
+    //to not interfere with placement
+    //it gets set to the rope after placement
+    int player_x=-1; 
+    int player_y=-1;
     bool confused = false;
     bool gold = false;
     int lives = 3;

@@ -11,7 +11,11 @@ private:
 	event* room_event = nullptr;
 public:
 	// TODO public members
-
+	/*
+	Name: ~Room (Destructor)
+	Description: frees the event in the room if any
+	*/
+	~Room();
 	/*
 	Name: set_event (setter)
 	Description: sets event to point to an 

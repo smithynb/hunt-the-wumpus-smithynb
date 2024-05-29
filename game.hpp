@@ -251,9 +251,10 @@ public:
 
 	/*
 	Name: cleanup
-	Description: frees objects from heap
+	Description: frees objects from heap 
+	(not needed when room has destructor)
 	*/
-	void cleanup();
+	//void cleanup();
 
 	/*
 	Name: respawn

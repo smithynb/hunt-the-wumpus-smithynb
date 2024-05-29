@@ -481,8 +481,9 @@ void game::place_random_empty(event* e){
 	while(!found){
 		x = rand()%width;
 		y = rand()%height;
-		//no event then return
-		if(!rooms.at(x).at(y).has_event()){
+		//no event or player, then place
+		if(!rooms.at(x).at(y).has_event() && 
+		x!=gs.get_player_x() && y!=gs.get_player_y()){
 			found = true;
 		}
 	}
@@ -504,9 +505,9 @@ void game::check_adjacent(){
 	if(can_move_in_direction('d')){
 		rooms.at(gs.get_player_x()+1).at(gs.get_player_y()).percept();
 	}
-	
 }
 
+/*
 void game::cleanup(){
 	for(int i=0;i<width;i++){
 		for(int j=0;j<height;j++){
@@ -515,6 +516,7 @@ void game::cleanup(){
 		}
 	}
 }
+*/
 
 void game::respawn(){
 	if(gs.has_gold()){

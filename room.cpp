@@ -1,6 +1,12 @@
 #include "room.hpp"
 
 // TODO Room implementation (define room member functions below)
+Room::~Room(){
+    if(this->room_event!=nullptr){
+        delete room_event;
+        room_event=nullptr;
+    }
+}
 void Room::set_event(event* e){
     this->room_event = e;
 }
