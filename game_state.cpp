@@ -18,6 +18,12 @@ int game_state::get_wumpus_x()const{
 int game_state::get_wumpus_y()const{
     return this->wumpus_y;
 }
+bool game_state::has_gold()const{
+    return this->gold;
+}
+int game_state::get_num_arrows()const{
+    return this->num_arrows;
+}
 
 void game_state::reduce_lives(){
     this->lives--;
@@ -33,6 +39,15 @@ void game_state::set_wumpus_x(int x){
 }
 void game_state::set_wumpus_y(int y){
     this->wumpus_y = y;
+}
+void game_state::set_gold(bool x){
+    this->gold=x;
+}
+void game_state::pickup_arrow(){
+    this->num_arrows++;
+}
+void game_state::use_arrow(){
+    this->num_arrows--;
 }
 
 void game_state::print_lives()const{

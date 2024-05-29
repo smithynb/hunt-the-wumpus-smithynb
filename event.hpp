@@ -43,6 +43,14 @@ public:
 	Returns: true if overrided by wumpus
 	*/
 	virtual bool is_wumpus()const;
+
+	/*
+	Name: to_remove
+	Description: returns if the event in the room is to be removed
+	on trigger
+	Returns: (bool)true to delete(arrow,gold), false by default
+	*/
+	virtual bool to_remove()const;
 };
 
 #endif

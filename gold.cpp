@@ -2,8 +2,8 @@
 
 // TODO Gold implementation (define gold member functions below)
 void gold::trigger(game_state& g){
-    //placeholder
-    std::cout << "gold trigger" << std::endl;
+    g.set_gold(true);
+    std::cout << "You picked up gold!" << std::endl;
 }
 void gold::percept(){
     //placeholder
@@ -12,4 +12,7 @@ void gold::percept(){
 }
 void gold::print_char()const{
     std::cout<<'g';
+}
+bool gold::to_remove()const{
+    return true;
 }

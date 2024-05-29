@@ -76,6 +76,13 @@ public:
 	*/
 	void free_event();
 
+	/*
+	Name: check_remove
+	Description: checks if the room has gold/arrow
+	Returns (bool) true if the room has gold/arrow
+	*/
+	bool check_remove()const;
+
 };
 
 #endif

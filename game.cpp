@@ -84,7 +84,7 @@ game::game(int width, int height, bool debug) :
 
 void game::display_game() const{
 	std::cout << std::endl << std::endl;
-	std::cout << "Arrows remaining: " << this->num_arrows << std::endl;
+	std::cout << "Arrows remaining: " << gs.get_num_arrows() << std::endl;
 
 	std::string row_border = "--";
 	for (int i = 0; i < this->width; ++i) {
@@ -223,7 +223,7 @@ bool game::is_valid_action(char action) {
 		char direction = action;
 		return this->can_move_in_direction(direction);
 	} else if (action == 'f') {
-		return this->num_arrows > 0;
+		return gs.get_num_arrows() > 0;
 	}
 	return false;
 }
@@ -373,7 +373,7 @@ void game::fire_arrow(char direction) {
 		this->fire_arrow_down();
 	}
 
-	this->num_arrows--;
+	gs.use_arrow();
 }
 
 void game::play_game(){
@@ -401,6 +401,17 @@ void game::play_game(){
 		// TODO If the user is on a space with an event, trigger its encounter
 		if(rooms.at(gs.get_player_x()).at(gs.get_player_y()).has_event()){
 			rooms.at(gs.get_player_x()).at(gs.get_player_y()).trigger(gs);
+		}
+
+		/*
+		Checks after a trigger modifies the gamestate.
+		Using modifications to gamestate to trigger game events
+		because I can't directly pass the game object itself as a parameter
+		*/
+
+		//Remove gold/arrow from board on pickup
+		if(rooms.at(gs.get_player_x()).at(gs.get_player_y()).check_remove()){ 
+			rooms.at(gs.get_player_x()).at(gs.get_player_y()).free_event();
 		}
 		
 	}

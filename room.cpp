@@ -42,5 +42,10 @@ void Room::free_event(){
         delete this->room_event;
         this->room_event = nullptr;
     }
-    
+}
+bool Room::check_remove()const{
+    if(this->room_event!=nullptr && this->room_event->to_remove()){
+        return true;
+    }
+    return false;
 }

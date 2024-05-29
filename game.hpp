@@ -11,7 +11,7 @@ private:
 	// TODO declare a 2D vector of Room objects:
 	std::vector<std::vector<Room>> rooms;
 	// Suggested member variables:
-	int num_arrows = 0; 	// keep track of number of arrows remaining
+	//int num_arrows = 0; 	// keep track of number of arrows remaining
 	int width;				// width of the game grid
 	int height;				// height of the game grid
 	bool debug;				// debug mode or not
