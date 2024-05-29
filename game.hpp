@@ -22,6 +22,8 @@ private:
 	//initialize to 0 for testing
 	//int player_x=0; //x position of the player
 	//int player_y=0; //y position of the player
+	int rope_x;
+	int rope_y;
 
 public:
 	// Suggested functions (there are no required functions here):
@@ -250,6 +252,13 @@ public:
 	Description: frees objects from heap
 	*/
 	void cleanup();
+
+	/*
+	Name: respawn
+	Description: drop items and respawn player at rope
+	Also relocates wumpus if killed by wumpus
+	*/
+	void respawn();
 
 	
 

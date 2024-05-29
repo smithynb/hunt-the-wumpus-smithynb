@@ -2,8 +2,7 @@
 
 // TODO Escape rope implementation (define escape_rope member functions below)
 void escape_rope::trigger(game_state& g){
-    //placeholder
-    std::cout << "rope trigger" << std::endl;
+    //std::cout << "rope trigger" << std::endl;
 }
 void escape_rope::print_char()const{
     std::cout<<'r';

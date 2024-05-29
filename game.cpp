@@ -46,6 +46,7 @@ game::game(int width, int height, bool debug) :
 	place_random_empty(w);
 
 	//find the wumpus
+	/*
 	for(int i=0;i<width;i++){
 		for(int j=0;j<height;j++){
 			if(rooms.at(i).at(j).check_wumpus()){
@@ -54,6 +55,7 @@ game::game(int width, int height, bool debug) :
 			}
 		}
 	}
+	*/
 
 	//gold
 	event* g = new gold;
@@ -75,6 +77,8 @@ game::game(int width, int height, bool debug) :
 			if(rooms.at(i).at(j).check_rope()){
 				gs.set_player_x(i);
 				gs.set_player_y(j);
+				rope_x = i;
+				rope_y = j;
 			}
 		}
 	}
@@ -416,7 +420,10 @@ void game::play_game(){
 		if(rooms.at(gs.get_player_x()).at(gs.get_player_y()).check_remove()){ 
 			rooms.at(gs.get_player_x()).at(gs.get_player_y()).free_event();
 		}
-		
+		//When player dies
+		if(gs.respawn()){
+			respawn();
+		}
 	}
 }
 
@@ -463,4 +470,24 @@ void game::cleanup(){
 	}
 }
 
-
+void game::respawn(){
+	if(gs.has_gold()){
+		event* g = new gold;
+		place_random_empty(g);
+		gs.set_gold(false);
+	}
+	if(gs.get_num_arrows()>0){
+		for(int i=0;i<=gs.get_num_arrows();i++){
+			event* a = new arrow;
+			place_random_empty(a);
+			gs.use_arrow();
+		}
+	}
+	if(rooms.at(gs.get_player_x()).at(gs.get_player_y()).check_wumpus()){
+		event* w = new wumpus;
+		place_random_empty(w);
+		rooms.at(gs.get_player_x()).at(gs.get_player_y()).free_event();
+	}
+	gs.set_player_x(rope_x);
+	gs.set_player_y(rope_y);
+}
