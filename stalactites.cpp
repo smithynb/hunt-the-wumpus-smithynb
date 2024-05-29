@@ -10,7 +10,6 @@ void stalactites::trigger(game_state& g){
     }
 }
 void stalactites::percept(){
-    //placeholder
     std::cout << "You hear water dripping." << std::endl;
 }
 void stalactites::print_char()const{

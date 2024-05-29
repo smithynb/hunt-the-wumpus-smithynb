@@ -2,8 +2,7 @@
 #define EVENT_HPP
 #include <iostream>
 #include "game_state.hpp"
-//forward declaration of game_state
-//class game_state;
+
 // Event interface 
 class event {
 private:

@@ -8,7 +8,6 @@ void wumpus::trigger(game_state& g){
     g.print_lives();
 }
 void wumpus::percept(){
-    //placeholder
     std::cout << "You smell a terrible stench." << std::endl;
 }
 void wumpus::print_char()const{

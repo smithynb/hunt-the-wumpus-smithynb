@@ -6,7 +6,6 @@ void gold::trigger(game_state& g){
     std::cout << "You picked up gold!" << std::endl << std::endl;
 }
 void gold::percept(){
-    //placeholder
     std::cout << "You see something shimmer nearby."
     << std::endl;
 }

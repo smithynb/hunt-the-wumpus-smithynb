@@ -7,7 +7,6 @@ void bats::trigger(game_state& g){
     << std::endl << std::endl;
 }
 void bats::percept(){
-    //placeholder
     std::cout << "You hear wings flapping." << std::endl;
 }
 void bats::print_char()const{
