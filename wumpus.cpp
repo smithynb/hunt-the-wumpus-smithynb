@@ -2,8 +2,9 @@
 
 // TODO Wumpus implementation (define wumpus member functions below)
 void wumpus::trigger(game_state& g){
-    //placeholder
-    std::cout << "wumpus trigger" << std::endl;
+    g.reduce_lives();
+    std::cout << "You woke up the wumpus and it killed you!" << std::endl;
+    g.print_lives();
 }
 void wumpus::percept(){
     //placeholder
@@ -11,4 +12,7 @@ void wumpus::percept(){
 }
 void wumpus::print_char()const{
     std::cout<<'w';
+}
+bool wumpus::is_wumpus()const{
+    return true;
 }

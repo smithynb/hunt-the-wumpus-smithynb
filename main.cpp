@@ -81,6 +81,7 @@ int main()
 
 	//Play game
 	g.play_game();
-
+	
+	g.cleanup();
 	return 0;
 }

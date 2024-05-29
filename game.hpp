@@ -245,6 +245,12 @@ public:
 	*/
 	void check_adjacent();
 
+	/*
+	Name: cleanup
+	Description: frees objects from heap
+	*/
+	void cleanup();
+
 	
 
 };

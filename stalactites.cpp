@@ -2,8 +2,11 @@
 
 // TODO Stalactites implementation (define stalactites member functions below)
 void stalactites::trigger(game_state& g){
-    //placeholder
-    std::cout << "stalactites trigger" << std::endl;
+    if(rand()%2==1){
+        std::cout<<"Stalactites fall and kill you!" << std::endl;
+        g.reduce_lives();
+        g.print_lives();
+    }
 }
 void stalactites::percept(){
     //placeholder

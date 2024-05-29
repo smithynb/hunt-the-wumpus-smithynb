@@ -10,6 +10,7 @@ public:
     void trigger(game_state& g);
     void percept();
     void print_char()const;
+    bool is_wumpus()const;
 };
 
 #endif

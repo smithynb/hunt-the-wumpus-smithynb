@@ -5,3 +5,6 @@
 bool event::is_rope()const{
     return false;
 }
+bool event::is_wumpus()const{
+    return false;
+}

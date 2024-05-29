@@ -55,13 +55,26 @@ public:
 	Description: checks if the room has the rope event
 	Returns: (bool) true if the room has a rope
 	*/
-	bool check_rope();
+	bool check_rope()const;
 
 	/*
 	Name: percept
 	Description: calls the percept function of the event if any
 	*/
 	void percept();
+
+	/*
+	Name: check_wumpus
+	Description: calls the is_wumpus function 
+	Returns: (bool) true if the room has wumpus
+	*/
+	bool check_wumpus()const;
+
+	/*
+	Name: free_event
+	Description: delete the event and set nullptr
+	*/
+	void free_event();
 
 };
 

@@ -44,6 +44,17 @@ game::game(int width, int height, bool debug) :
 	//wumpus
 	event* w = new wumpus;
 	place_random_empty(w);
+
+	//find the wumpus
+	for(int i=0;i<width;i++){
+		for(int j=0;j<height;j++){
+			if(rooms.at(i).at(j).check_wumpus()){
+				gs.set_wumpus_x(i);
+				gs.set_wumpus_y(j);
+			}
+		}
+	}
+
 	//gold
 	event* g = new gold;
 	place_random_empty(g);
@@ -150,6 +161,7 @@ bool game::check_lose() const{
 	// TODO Delete the below placeholder code. Return true if the player
 	// has lost the game. Return false otherwise.
 	if(gs.get_lives()==0){
+		std::cout << "You lose!" << std::endl;
 		return true;
 	}
 	//std::cout << "game::check_lose() is not implemented..." << std::endl;
@@ -370,7 +382,8 @@ void game::play_game(){
 		this->display_game();
 
 		// TODO Display precepts around player's location
-
+		//percept
+		check_adjacent();
 		// Ask player for their action
 		char action = this->get_player_action();
 
@@ -389,8 +402,7 @@ void game::play_game(){
 		if(rooms.at(gs.get_player_x()).at(gs.get_player_y()).has_event()){
 			rooms.at(gs.get_player_x()).at(gs.get_player_y()).trigger(gs);
 		}
-		//percept
-		check_adjacent();
+		
 	}
 }
 
@@ -426,6 +438,15 @@ void game::check_adjacent(){
 		rooms.at(gs.get_player_x()+1).at(gs.get_player_y()).percept();
 	}
 	
+}
+
+void game::cleanup(){
+	for(int i=0;i<width;i++){
+		for(int j=0;j<height;j++){
+				//checking happens in the function already
+				rooms.at(i).at(j).free_event();
+		}
+	}
 }
 
 

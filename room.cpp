@@ -20,15 +20,27 @@ void Room::print_char()const{
 void Room::trigger(game_state& g){
     this->room_event->trigger(g);
 }
-bool Room::check_rope(){
+bool Room::check_rope()const{
     if(this->room_event!=nullptr && this->room_event->is_rope()){
         return true;
     }
-    
     return false;
 }
 void Room::percept(){
     if(this->room_event!=nullptr){
         this->room_event->percept();
     }
+}
+bool Room::check_wumpus()const{
+    if(this->room_event!=nullptr && this->room_event->is_wumpus()){
+        return true;
+    }
+    return false;
+}
+void Room::free_event(){
+    if(this->has_event()){
+        delete this->room_event;
+        this->room_event = nullptr;
+    }
+    
 }

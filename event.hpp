@@ -36,6 +36,13 @@ public:
 	Returns: true if overrided by escape rope
 	*/
 	virtual bool is_rope()const;
+
+	/*
+	Name: is_wumpus
+	Description: returns if the event is a wumpus
+	Returns: true if overrided by wumpus
+	*/
+	virtual bool is_wumpus()const;
 };
 
 #endif
