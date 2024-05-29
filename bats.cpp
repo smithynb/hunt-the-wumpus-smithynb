@@ -2,8 +2,9 @@
 
 // TODO Bats implementation (define bats member functions below)
 void bats::trigger(game_state& g){
-    //placeholder
-    std::cout << "bats trigger" << std::endl;
+    g.confuse();
+    std::cout << "Super bats confuse you!" 
+    << std::endl << std::endl;
 }
 void bats::percept(){
     //placeholder

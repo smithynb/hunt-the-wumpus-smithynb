@@ -3,7 +3,8 @@
 // TODO Arrow implementation (define arrow member functions below)
 void arrow::trigger(game_state& g){
     g.pickup_arrow();
-    std::cout << "You picked up an arrow!" << std::endl;
+    std::cout << "You picked up an arrow!" 
+    << std::endl << std::endl;
 }
 void arrow::percept(){
     std::cout << "You see an arrow on the ground in an adjacent room."

@@ -8,7 +8,6 @@ private:
     int player_x;
     int player_y;
     bool confused = false;
-    int confused_duration = 0;
     bool gold = false;
     int lives = 3;
     int num_arrows = 0;

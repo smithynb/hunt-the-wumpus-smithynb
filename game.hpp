@@ -24,6 +24,8 @@ private:
 	//int player_y=0; //y position of the player
 	int rope_x;
 	int rope_y;
+	bool possess = false;
+	char action;
 
 public:
 	// Suggested functions (there are no required functions here):
@@ -260,6 +262,11 @@ public:
 	*/
 	void respawn();
 
+	/*
+	Name: random_move
+	Description: set action to random valid move
+	*/
+	void random_move();
 	
 
 };

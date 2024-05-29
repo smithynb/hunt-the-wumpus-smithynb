@@ -392,7 +392,10 @@ void game::play_game(){
 		//percept
 		check_adjacent();
 		// Ask player for their action
-		char action = this->get_player_action();
+		if(!possess){
+			action = this->get_player_action();
+		}
+		possess = false;
 
 		// Process action
 		if (this->is_direction(action)) {
@@ -423,6 +426,10 @@ void game::play_game(){
 		//When player dies
 		if(gs.respawn()){
 			respawn();
+		}
+		if(gs.is_confused()){
+			possess = true;
+			random_move();
 		}
 	}
 }
@@ -490,4 +497,32 @@ void game::respawn(){
 	}
 	gs.set_player_x(rope_x);
 	gs.set_player_y(rope_y);
+}
+
+void game::random_move(){
+	bool done = false;
+	//try again if invalid move
+	while(!done){
+		int choice = rand()%4; //random int 0 to 3 inclusive
+		//std::cout << "RAND DIRECTION: " << choice <<std::endl; //debug
+		//0 up, 1 down
+		//2 left, 3 right
+		//validate and move, otherwise try again
+		if(choice==0 && can_move_in_direction('w')){
+			action = 'w';
+			done = true;
+		}
+		else if(choice==1 && can_move_in_direction('s')){
+			action = 's';
+			done = true;
+		}
+		else if(choice==2 && can_move_in_direction('a')){
+			action = 'a';
+			done = true;
+		}
+		else if(choice==3 && can_move_in_direction('d')){
+			action = 'd';
+			done = true;
+		}
+	}
 }

@@ -7,7 +7,11 @@ int game_state::get_player_y()const{
     return player_y;
 }
 bool game_state::is_confused(){
-    return confused;
+    //similar to respawn,
+    //calling this will set it false
+    bool temp = this->confused;
+    this->confused=false;
+    return temp;
 }
 int game_state::get_lives()const{
     return this->lives;
@@ -41,6 +45,9 @@ void game_state::set_player_x(int x){
 }
 void game_state::set_player_y(int y){
     this->player_y = y;
+}
+void game_state::confuse(){
+    this->confused = true;
 }
 /*void game_state::set_wumpus_x(int x){
     this->wumpus_x = x;
