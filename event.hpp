@@ -28,7 +28,7 @@ public:
 	Name: percept
 	Description: prints percept text
 	*/
-	virtual void percept()=0;
+	virtual void percept(){}
 
 	/*
 	Name: is_rope

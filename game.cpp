@@ -152,8 +152,11 @@ void game::display_game() const{
 bool game::check_win() const{
 	// TODO Delete the below placeholder code. Return true if the player
 	// has won the game. Return false otherwise.
-
-	std::cout << "game::check_win() is not implemented..." << std::endl;
+	if(gs.has_gold() && 
+	rooms.at(gs.get_player_x()).at(gs.get_player_y()).check_rope()){
+		std::cout << "You win!" << std::endl;
+		return true;
+	}
 	return false;
 }
 
